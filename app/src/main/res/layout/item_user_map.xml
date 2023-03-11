@@ -9,10 +9,13 @@
         android:id="@+id/tvMapTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="2dp"
         android:textSize="24sp"
-        android:padding="10dp"
-        tools:text="Singapore itinerary"
-        android:background="?attr/selectableItemBackground"/>
+        tools:text="Singapore itinerary" />
 
     <TextView
         android:id="@+id/tvMarkers"

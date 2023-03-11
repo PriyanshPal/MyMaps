@@ -24,6 +24,7 @@ import com.example.mymaps.models.Place
 import com.example.mymaps.models.UserMap
 import com.google.android.gms.maps.model.Marker
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
 

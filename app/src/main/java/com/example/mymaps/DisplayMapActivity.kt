@@ -12,6 +12,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.example.mymaps.databinding.ActivityDisplayMap2Binding
 import com.example.mymaps.models.UserMap
 import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 
 class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -19,6 +21,7 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var userMap: UserMap
     private lateinit var binding: ActivityDisplayMap2Binding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,7 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
     }
 
     /**
@@ -49,7 +53,7 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
         for(place in userMap.places) {
             val latLng = LatLng(place.lattitude, place.longitutde)
             boundsBuilder.include(latLng)
-            mMap.addMarker(MarkerOptions().position(latLng).title(place.title))
+            mMap.addMarker(MarkerOptions().position(latLng).title(place.title))?.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
         }
 
         // Add a marker in Sydney and move the camera
