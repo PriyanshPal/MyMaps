@@ -1,5 +1,6 @@
 package com.example.mymaps
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
@@ -36,9 +37,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
         val fabCreateMap: FloatingActionButton = findViewById(R.id.fabCreateMap)
         val rvMaps:RecyclerView = findViewById(R.id.rvMaps)
         userMaps = deserializeUserMap(this).toMutableList()
@@ -64,6 +62,8 @@ class MainActivity : AppCompatActivity() {
             showAlertDialogue()
         }
     }
+
+    @SuppressLint("ResourceAsColor")
     private fun showAlertDialogue() {
         val mapFormView = LayoutInflater.from(this).inflate(R.layout.dialog_create_map, null)
         val dialogue =
@@ -85,6 +85,8 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_CODE)
             dialogue.dismiss()
         }
+//        dialogue.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(android.R.color.white)
+//        dialogue.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(android.R.color.white)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
