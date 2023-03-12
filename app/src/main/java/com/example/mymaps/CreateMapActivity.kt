@@ -62,7 +62,7 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
         //Check that 'item' is the save menu Option
         if(item.itemId == R.id.miSave) {
             if(markers.isEmpty()) {
-                Toast.makeText(this, "There must be atleast one marker on the map", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "There must be at least one marker on the map", Toast.LENGTH_LONG).show()
                 return true
             }
             val places = markers.map { marker -> marker.title?.let { marker.snippet?.let { it1 ->
@@ -76,20 +76,16 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
             finish()
             return true
         }
+        if(item.itemId == R.id.miMapType) {
+            mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+        }
         return super.onOptionsItemSelected(item)
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+
+//        mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
 
         mMap.setOnInfoWindowClickListener { markerToDelete ->
             markers.remove(markerToDelete)
@@ -98,8 +94,8 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap.setOnMapLongClickListener { latLng ->
             showAlertDialogue(latLng)
-
         }
+
 
         // Add a marker in Sydney and move the camera
         val delhi = LatLng(28.644800, 77.216721)

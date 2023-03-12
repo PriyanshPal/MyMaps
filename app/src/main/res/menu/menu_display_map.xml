@@ -2,14 +2,8 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
-        android:id="@+id/miSave"
-        android:icon="@android:drawable/ic_menu_save"
-        android:title="Save"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/miMapType"
+        android:id="@+id/miChangeMap"
         android:icon="@android:drawable/ic_dialog_map"
         android:title="Map Type"
         app:showAsAction="always" />

@@ -2,6 +2,8 @@ package com.example.mymaps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -37,15 +39,18 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_display_map, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.miChangeMap) {
+            mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
